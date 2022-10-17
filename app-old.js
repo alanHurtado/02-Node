@@ -1,13 +1,22 @@
-const http = require("http");
+const http = require('http');
 
-const server = http.createServer((request, response) => {
 
-  response.writeHead(200, { 'Content-Type': 'text/plain'})
-  response.write('Hola mundo');
-  response.end();
+http.createServer((req, res) => {
 
-});
+        res.writeHead(200, { 'Content-Type': 'application/json' });
 
-server.listen( 8080 );
+        let salida = {
+            nombre: 'fernando',
+            edad: 32,
+            url: req.url
+        }
 
-console.log('Escuchando el puerto', 8080);
+        res.write(JSON.stringify(salida));
+        // res.write('Hola Mundo');
+        res.end();
+
+    })
+    .listen(8080);
+
+
+console.log('Escuchando el puerto 8080');
